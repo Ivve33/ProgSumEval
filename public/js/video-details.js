@@ -15,7 +15,7 @@ function addText(parent, tagName, text, className) {
 }
 
 function formatValue(value) {
-  return value === null || value === undefined || value === "" ? "N/A" : value;
+  return value === null || value === undefined || value === "" ? "-" : value;
 }
 
 function createMetadata(video) {
@@ -72,7 +72,7 @@ function renderOriginalVideo(video, evaluation) {
 
   const originalAverage = evaluation && evaluation.original
     ? formatValue(evaluation.original.avg_quiz_score)
-    : "N/A";
+    : "-";
   addText(videoContainer, "p", `Original average quiz score: ${originalAverage}`, "note");
 
   const embedUrl = getYouTubeEmbedUrl(video.youtube_url);

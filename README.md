@@ -99,6 +99,14 @@ Original rows have no difference score. Summary rows are aggregated by model and
 - `/submit`
 - `/video/1`
 
+The Home page includes a Paper Citation section and one representative Evaluation Form example link:
+
+```text
+https://forms.gle/Ai6e4LxgehtDUZXx5
+```
+
+The Video Details and Results pages include Metric Definitions panels for the quiz, difference, completeness, clarity, and coherence metrics. Missing display values are shown as `-`.
+
 ## API Routes
 
 - `/api/videos`

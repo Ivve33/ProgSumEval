@@ -4,7 +4,7 @@ const videoTable = document.getElementById("videoTable");
 const rawTable = document.getElementById("rawTable");
 
 function formatValue(value) {
-  return value === null || value === undefined || value === "" ? "N/A" : value;
+  return value === null || value === undefined || value === "" ? "-" : value;
 }
 
 function addCell(row, value) {

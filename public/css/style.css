@@ -231,6 +231,46 @@ button.secondary {
   margin: 0;
 }
 
+.citation-block {
+  margin: 0;
+  padding: 16px;
+  overflow-x: auto;
+  border: 1px solid #d9ded4;
+  border-radius: 6px;
+  background: #f8f9f6;
+  color: #1f2933;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  white-space: pre;
+}
+
+.metric-definition-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.metric-definition-card {
+  min-height: 128px;
+  padding: 18px;
+  border: 1px solid #d9ded4;
+  border-radius: 6px;
+  background: #f8f9f6;
+}
+
+.metric-definition-card h3 {
+  margin-bottom: 8px;
+  color: #244f75;
+  font-weight: 700;
+}
+
+.metric-definition-card p {
+  margin: 0;
+  color: #52616d;
+  font-size: 0.94rem;
+}
+
 .search-label,
 .search-form label,
 .selected-email-group label,
