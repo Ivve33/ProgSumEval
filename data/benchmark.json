@@ -1,0 +1,304 @@
+{
+  "videos": [
+    {
+      "title": "Original Programming Tutorial 1",
+      "language": "Programming",
+      "topic": "Programming Tutorial",
+      "duration": "",
+      "difficulty": "",
+      "youtube_url": "https://youtu.be/UfMM924sBvg?si=oui8hnCQ2kqtDBFv",
+      "transcript": "",
+      "summaries": [
+        {
+          "engine_name": "VEED",
+          "summary_text": "",
+          "summary_video_filename": "original_001_veed.mp4",
+          "summary_duration": "",
+          "completeness_rating": null,
+          "clarity_rating": null,
+          "coherence_rating": null
+        },
+        {
+          "engine_name": "NotebookLM",
+          "summary_text": "",
+          "summary_video_filename": "original_001_notebooklm.mp4",
+          "summary_duration": "",
+          "completeness_rating": null,
+          "clarity_rating": null,
+          "coherence_rating": null
+        }
+      ],
+      "quiz": []
+    },
+    {
+      "title": "Original Programming Tutorial 2",
+      "language": "Programming",
+      "topic": "Programming Tutorial",
+      "duration": "",
+      "difficulty": "",
+      "youtube_url": "https://youtu.be/BqQ0qR8kmw8?si=wBN1IIsIXflIN4Pj",
+      "transcript": "",
+      "summaries": [
+        {
+          "engine_name": "VEED",
+          "summary_text": "",
+          "summary_video_filename": "original_002_veed.mp4",
+          "summary_duration": "",
+          "completeness_rating": null,
+          "clarity_rating": null,
+          "coherence_rating": null
+        },
+        {
+          "engine_name": "NotebookLM",
+          "summary_text": "",
+          "summary_video_filename": "original_002_notebooklm.mp4",
+          "summary_duration": "",
+          "completeness_rating": null,
+          "clarity_rating": null,
+          "coherence_rating": null
+        }
+      ],
+      "quiz": []
+    },
+    {
+      "title": "Original Programming Tutorial 3",
+      "language": "Programming",
+      "topic": "Programming Tutorial",
+      "duration": "",
+      "difficulty": "",
+      "youtube_url": "https://youtu.be/Ky8P70QlKNU?si=At716Ekt3uf0dWj2",
+      "transcript": "",
+      "summaries": [
+        {
+          "engine_name": "VEED",
+          "summary_text": "",
+          "summary_video_filename": "original_003_veed.mp4",
+          "summary_duration": "",
+          "completeness_rating": null,
+          "clarity_rating": null,
+          "coherence_rating": null
+        },
+        {
+          "engine_name": "NotebookLM",
+          "summary_text": "",
+          "summary_video_filename": "original_003_notebooklm.mp4",
+          "summary_duration": "",
+          "completeness_rating": null,
+          "clarity_rating": null,
+          "coherence_rating": null
+        }
+      ],
+      "quiz": []
+    },
+    {
+      "title": "Original Programming Tutorial 4",
+      "language": "Programming",
+      "topic": "Programming Tutorial",
+      "duration": "",
+      "difficulty": "",
+      "youtube_url": "https://youtu.be/H62Jfv1DJlU?si=oXSPuyCUTRiehQSM",
+      "transcript": "",
+      "summaries": [
+        {
+          "engine_name": "VEED",
+          "summary_text": "",
+          "summary_video_filename": "original_004_veed.mp4",
+          "summary_duration": "",
+          "completeness_rating": null,
+          "clarity_rating": null,
+          "coherence_rating": null
+        },
+        {
+          "engine_name": "NotebookLM",
+          "summary_text": "",
+          "summary_video_filename": "original_004_notebooklm.mp4",
+          "summary_duration": "",
+          "completeness_rating": null,
+          "clarity_rating": null,
+          "coherence_rating": null
+        }
+      ],
+      "quiz": []
+    },
+    {
+      "title": "Original Programming Tutorial 5",
+      "language": "Programming",
+      "topic": "Programming Tutorial",
+      "duration": "",
+      "difficulty": "",
+      "youtube_url": "https://youtu.be/YbqneqDIZh8?si=HfkP7FGQ_KR3YXv0",
+      "transcript": "",
+      "summaries": [
+        {
+          "engine_name": "VEED",
+          "summary_text": "",
+          "summary_video_filename": "original_005_veed.mp4",
+          "summary_duration": "",
+          "completeness_rating": null,
+          "clarity_rating": null,
+          "coherence_rating": null
+        },
+        {
+          "engine_name": "NotebookLM",
+          "summary_text": "",
+          "summary_video_filename": "original_005_notebooklm.mp4",
+          "summary_duration": "",
+          "completeness_rating": null,
+          "clarity_rating": null,
+          "coherence_rating": null
+        }
+      ],
+      "quiz": []
+    },
+    {
+      "title": "Original Programming Tutorial 6",
+      "language": "Programming",
+      "topic": "Programming Tutorial",
+      "duration": "",
+      "difficulty": "",
+      "youtube_url": "https://youtu.be/k-7jJP7QFEM?si=heEu8mQjcNP0vNkO",
+      "transcript": "",
+      "summaries": [
+        {
+          "engine_name": "VEED",
+          "summary_text": "",
+          "summary_video_filename": "original_006_veed.mp4",
+          "summary_duration": "",
+          "completeness_rating": null,
+          "clarity_rating": null,
+          "coherence_rating": null
+        },
+        {
+          "engine_name": "NotebookLM",
+          "summary_text": "",
+          "summary_video_filename": "original_006_notebooklm.mp4",
+          "summary_duration": "",
+          "completeness_rating": null,
+          "clarity_rating": null,
+          "coherence_rating": null
+        }
+      ],
+      "quiz": []
+    },
+    {
+      "title": "Original Programming Tutorial 7",
+      "language": "Programming",
+      "topic": "Programming Tutorial",
+      "duration": "",
+      "difficulty": "",
+      "youtube_url": "https://youtu.be/KGhacRRMnDw?si=dR6-ZZjqh2QxqH56",
+      "transcript": "",
+      "summaries": [
+        {
+          "engine_name": "VEED",
+          "summary_text": "",
+          "summary_video_filename": "original_007_veed.mp4",
+          "summary_duration": "",
+          "completeness_rating": null,
+          "clarity_rating": null,
+          "coherence_rating": null
+        },
+        {
+          "engine_name": "NotebookLM",
+          "summary_text": "",
+          "summary_video_filename": "original_007_notebooklm.mp4",
+          "summary_duration": "",
+          "completeness_rating": null,
+          "clarity_rating": null,
+          "coherence_rating": null
+        }
+      ],
+      "quiz": []
+    },
+    {
+      "title": "Original Programming Tutorial 8",
+      "language": "Programming",
+      "topic": "Programming Tutorial",
+      "duration": "",
+      "difficulty": "",
+      "youtube_url": "https://youtu.be/HpuH7n9VOYk?si=tA5sQJJwbVya52z4",
+      "transcript": "",
+      "summaries": [
+        {
+          "engine_name": "VEED",
+          "summary_text": "",
+          "summary_video_filename": "original_008_veed.mp4",
+          "summary_duration": "",
+          "completeness_rating": null,
+          "clarity_rating": null,
+          "coherence_rating": null
+        },
+        {
+          "engine_name": "NotebookLM",
+          "summary_text": "",
+          "summary_video_filename": "original_008_notebooklm.mp4",
+          "summary_duration": "",
+          "completeness_rating": null,
+          "clarity_rating": null,
+          "coherence_rating": null
+        }
+      ],
+      "quiz": []
+    },
+    {
+      "title": "Original Programming Tutorial 9",
+      "language": "Programming",
+      "topic": "Programming Tutorial",
+      "duration": "",
+      "difficulty": "",
+      "youtube_url": "https://youtu.be/q2SGW2VgwAM?si=ptwiO9bEAEUw7kh0",
+      "transcript": "",
+      "summaries": [
+        {
+          "engine_name": "VEED",
+          "summary_text": "",
+          "summary_video_filename": "original_009_veed.mp4",
+          "summary_duration": "",
+          "completeness_rating": null,
+          "clarity_rating": null,
+          "coherence_rating": null
+        },
+        {
+          "engine_name": "NotebookLM",
+          "summary_text": "",
+          "summary_video_filename": "original_009_notebooklm.mp4",
+          "summary_duration": "",
+          "completeness_rating": null,
+          "clarity_rating": null,
+          "coherence_rating": null
+        }
+      ],
+      "quiz": []
+    },
+    {
+      "title": "Original Programming Tutorial 10",
+      "language": "Programming",
+      "topic": "Programming Tutorial",
+      "duration": "",
+      "difficulty": "",
+      "youtube_url": "https://youtu.be/WQ8eem9Awt4?si=P8WmoI43r-fOn3Fp",
+      "transcript": "",
+      "summaries": [
+        {
+          "engine_name": "VEED",
+          "summary_text": "",
+          "summary_video_filename": "original_010_veed.mp4",
+          "summary_duration": "",
+          "completeness_rating": null,
+          "clarity_rating": null,
+          "coherence_rating": null
+        },
+        {
+          "engine_name": "NotebookLM",
+          "summary_text": "",
+          "summary_video_filename": "original_010_notebooklm.mp4",
+          "summary_duration": "",
+          "completeness_rating": null,
+          "clarity_rating": null,
+          "coherence_rating": null
+        }
+      ],
+      "quiz": []
+    }
+  ]
+}

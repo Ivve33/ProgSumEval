@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Details | ProgSumEval</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <main class="page">
+    <nav class="top-nav">
+      <a href="/">ProgSumEval</a>
+      <a href="/browse">Browse Benchmark</a>
+      <a href="/submit">Submit Request</a>
+    </nav>
+
+    <h1>Video Details</h1>
+
+    <section id="videoContainer" class="details-section"></section>
+    <section id="summariesContainer" class="details-section"></section>
+    <section id="quizContainer" class="details-section"></section>
+  </main>
+
+  <script>
+    const videoContainer = document.getElementById("videoContainer");
+    const summariesContainer = document.getElementById("summariesContainer");
+    const quizContainer = document.getElementById("quizContainer");
+    const videoId = window.location.pathname.split("/").pop();
+
+    function addText(parent, tagName, text) {
+      const element = document.createElement(tagName);
+      element.textContent = text;
+      parent.appendChild(element);
+      return element;
+    }
+
+    function createMetadataText(video) {
+      return [
+        `Language: ${video.language || "Not specified"}`,
+        `Topic: ${video.topic || "Not specified"}`,
+        `Duration: ${video.duration || "Not specified"}`,
+        `Difficulty: ${video.difficulty || "Not specified"}`,
+      ].join(" | ");
+    }
+
+    function getYouTubeEmbedUrl(youtubeUrl) {
+      try {
+        const url = new URL(youtubeUrl);
+        let videoIdValue = "";
+
+        if (url.hostname === "youtu.be") {
+          videoIdValue = url.pathname.split("/").filter(Boolean)[0];
+        }
+
+        if (url.hostname.includes("youtube.com")) {
+          videoIdValue = url.searchParams.get("v");
+        }
+
+        return videoIdValue ? `https://www.youtube.com/embed/${videoIdValue}` : "";
+      } catch {
+        return "";
+      }
+    }
+
+    function formatRating(value) {
+      return value === null || value === undefined || value === "" ? "Not rated yet." : value;
+    }
+
+    function renderOriginalVideo(video) {
+      addText(videoContainer, "h2", "Original Tutorial");
+      addText(videoContainer, "h3", video.title);
+      addText(videoContainer, "p", createMetadataText(video));
+
+      const embedUrl = getYouTubeEmbedUrl(video.youtube_url);
+
+      if (embedUrl) {
+        const iframe = document.createElement("iframe");
+        iframe.className = "youtube-player";
+        iframe.src = embedUrl;
+        iframe.title = video.title;
+        iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+        iframe.allowFullscreen = true;
+        videoContainer.appendChild(iframe);
+      } else {
+        addText(videoContainer, "p", "YouTube embed is unavailable for this URL.");
+      }
+
+      const youtubeLink = document.createElement("a");
+      youtubeLink.href = video.youtube_url;
+      youtubeLink.target = "_blank";
+      youtubeLink.rel = "noopener noreferrer";
+      youtubeLink.textContent = "Open on YouTube";
+      videoContainer.appendChild(youtubeLink);
+    }
+
+    function renderSummaries(summaries) {
+      addText(summariesContainer, "h2", "AI Summaries");
+
+      if (summaries.length === 0) {
+        addText(summariesContainer, "p", "No summaries available yet.");
+        return;
+      }
+
+      summaries.forEach((summary) => {
+        const article = document.createElement("article");
+        article.className = "card";
+
+        addText(article, "h3", summary.engine_name);
+
+        const player = document.createElement("video");
+        player.controls = true;
+        player.src = summary.summary_video_path;
+        player.className = "video-player";
+        article.appendChild(player);
+
+        if (summary.summary_duration) {
+          addText(article, "p", `Summary duration: ${summary.summary_duration}`);
+        }
+
+        if (summary.summary_text) {
+          addText(article, "p", summary.summary_text);
+        }
+
+        addText(article, "p", `Completeness rating: ${formatRating(summary.completeness_rating)}`);
+        addText(article, "p", `Clarity rating: ${formatRating(summary.clarity_rating)}`);
+        addText(article, "p", `Coherence rating: ${formatRating(summary.coherence_rating)}`);
+
+        summariesContainer.appendChild(article);
+      });
+    }
+
+    function renderQuiz(quizzes) {
+      addText(quizContainer, "h2", "Quiz");
+
+      if (quizzes.length === 0) {
+        addText(quizContainer, "p", "No quiz questions available yet.");
+        return;
+      }
+
+      quizzes.forEach((quiz) => {
+        const article = document.createElement("article");
+        article.className = "card";
+        addText(article, "h3", quiz.question);
+        addText(article, "p", `A. ${quiz.option_a}`);
+        addText(article, "p", `B. ${quiz.option_b}`);
+        addText(article, "p", `C. ${quiz.option_c}`);
+        addText(article, "p", `D. ${quiz.option_d}`);
+        quizContainer.appendChild(article);
+      });
+    }
+
+    fetch(`/api/videos/${videoId}`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Video not found.");
+        }
+
+        return response.json();
+      })
+      .then((data) => {
+        renderOriginalVideo(data.video);
+        renderSummaries(data.summaries);
+        renderQuiz(data.quizzes);
+      })
+      .catch(() => {
+        addText(videoContainer, "p", "Video not found.");
+      });
+  </script>
+</body>
+</html>

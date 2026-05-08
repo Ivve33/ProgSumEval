@@ -1,5 +1,0 @@
-textstat
-spacy
-language-tool-python
-sentence-transformers
-numpy

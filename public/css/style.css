@@ -1,0 +1,155 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f7f7f5;
+  color: #222;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+}
+
+a {
+  color: #1f4f78;
+}
+
+.page {
+  width: min(960px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 32px 0;
+}
+
+.intro {
+  padding: 56px 0;
+}
+
+h1 {
+  margin: 0 0 12px;
+  font-size: 2rem;
+}
+
+h2 {
+  margin: 0 0 8px;
+  font-size: 1.25rem;
+}
+
+h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+p {
+  margin: 0 0 16px;
+}
+
+.top-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 32px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #d9d9d2;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.button,
+button {
+  display: inline-block;
+  padding: 10px 14px;
+  border: 1px solid #1f4f78;
+  border-radius: 4px;
+  background: #1f4f78;
+  color: #fff;
+  font: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button.secondary {
+  background: #fff;
+  color: #1f4f78;
+}
+
+.search-label,
+.form label {
+  display: block;
+  margin: 16px 0 6px;
+  font-weight: 700;
+}
+
+.search-input,
+.form input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #c8c8c0;
+  border-radius: 4px;
+  background: #fff;
+  font: inherit;
+}
+
+.card-grid {
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.card {
+  padding: 16px;
+  border: 1px solid #d9d9d2;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.empty-message {
+  padding: 16px;
+  border: 1px solid #d9d9d2;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.details-section {
+  margin-top: 24px;
+}
+
+.video-player {
+  width: 100%;
+  max-height: 520px;
+  margin-top: 12px;
+  background: #111;
+}
+
+.youtube-player {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin: 12px 0;
+  border: 0;
+  background: #111;
+}
+
+.form {
+  max-width: 640px;
+}
+
+.form button {
+  margin-top: 18px;
+}
+
+.message {
+  margin-top: 18px;
+}
+
+.success {
+  color: #1f6b3a;
+}
+
+.error {
+  color: #9d2f2f;
+}

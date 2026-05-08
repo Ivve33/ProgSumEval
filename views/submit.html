@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submit Video Request | ProgSumEval</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <main class="page">
+    <nav class="top-nav">
+      <a href="/">ProgSumEval</a>
+      <a href="/browse">Browse Benchmark</a>
+    </nav>
+
+    <h1>Submit Video Request</h1>
+
+    <form id="requestForm" class="form">
+      <label for="youtubeUrl">YouTube URL or video request</label>
+      <input id="youtubeUrl" name="youtube_url" type="url" required placeholder="https://www.youtube.com/watch?v=...">
+
+      <label for="requesterEmail">Email optional</label>
+      <input id="requesterEmail" name="requester_email" type="email" placeholder="optional@email.com">
+
+      <button type="submit">Submit Request</button>
+    </form>
+
+    <p id="formMessage" class="message" aria-live="polite"></p>
+  </main>
+
+  <script src="/js/submit.js"></script>
+</body>
+</html>

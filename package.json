@@ -1,0 +1,30 @@
+{
+  "name": "progsumeval",
+  "version": "1.0.0",
+  "description": "A benchmark browser for evaluating AI-generated programming video summaries.",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "seed": "node scripts/seedDatabase.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ivve33/ProgSumEval.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Ivve33/ProgSumEval/issues"
+  },
+  "homepage": "https://github.com/Ivve33/ProgSumEval#readme",
+  "dependencies": {
+    "express": "^5.2.1",
+    "sqlite3": "^6.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
