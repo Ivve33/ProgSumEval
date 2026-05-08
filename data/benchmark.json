@@ -1,18 +1,21 @@
 {
   "videos": [
     {
-      "title": "Original Programming Tutorial 1",
-      "language": "Programming",
-      "topic": "Programming Tutorial",
+      "video_code": "V1",
+      "title": "Java Exceptions: Multiple Catch Blocks",
+      "channel": "telusko",
+      "language": "Java",
+      "topic": "Exceptions / Multiple Catch Blocks",
       "duration": "",
       "difficulty": "",
-      "youtube_url": "https://youtu.be/UfMM924sBvg?si=oui8hnCQ2kqtDBFv",
+      "youtube_url": "https://www.youtube.com/watch?v=Ky8P70QlKNU",
       "transcript": "",
       "summaries": [
         {
           "engine_name": "VEED",
           "summary_text": "",
           "summary_video_filename": "original_001_veed.mp4",
+          "summary_video_url": "https://github.com/Ivve33/ProgSumEval/releases/download/v1.0-dataset/original_001_veed.mp4",
           "summary_duration": "",
           "completeness_rating": null,
           "clarity_rating": null,
@@ -22,27 +25,72 @@
           "engine_name": "NotebookLM",
           "summary_text": "",
           "summary_video_filename": "original_001_notebooklm.mp4",
+          "summary_video_url": "https://github.com/Ivve33/ProgSumEval/releases/download/v1.0-dataset/original_001_notebooklm.mp4",
           "summary_duration": "",
           "completeness_rating": null,
           "clarity_rating": null,
           "coherence_rating": null
         }
       ],
-      "quiz": []
+      "quiz": [
+        {
+          "question": "What happens to the remaining code inside a try block after an exception is thrown?",
+          "option_a": "It continues execution after the catch block finishes.",
+          "option_b": "It is skipped, and control jumps directly to the matching catch block.",
+          "option_c": "It is executed only if the catch block successfully handles the error.",
+          "option_d": "The JVM retries the code automatically once the catch block completes.",
+          "correct_answer": "B"
+        },
+        {
+          "question": "If a try block contains a division by zero on line 1 and an invalid array access on line 2, which catch block will execute?",
+          "option_a": "Both catch blocks will execute in order.",
+          "option_b": "Only the ArithmeticException block.",
+          "option_c": "Only the ArrayIndexOutOfBoundsException block.",
+          "option_d": "Neither, because multiple errors cause a system crash.",
+          "correct_answer": "B"
+        },
+        {
+          "question": "When using multiple catch blocks, why must catch (Exception e) be placed at the very end?",
+          "option_a": "Because it is the parent class and would catch everything, making specific blocks unreachable.",
+          "option_b": "Because putting it first slows down the program's execution speed.",
+          "option_c": "Because specific exceptions like ArithmeticException do not inherit from Exception.",
+          "option_d": "Because the general Exception block requires more memory to initialize.",
+          "correct_answer": "A"
+        },
+        {
+          "question": "What is the result of trying to compile code where catch (ArithmeticException e) is placed after catch (RuntimeException e)?",
+          "option_a": "It compiles and runs perfectly.",
+          "option_b": "It fails to compile with an unreachable catch block error.",
+          "option_c": "The JVM will automatically reorder them at runtime.",
+          "option_d": "It runs but ignores the ArithmeticException block.",
+          "correct_answer": "B"
+        },
+        {
+          "question": "Which exception is specifically designed to handle cases where you attempt to call a method on an object that is currently null?",
+          "option_a": "ArithmeticException",
+          "option_b": "NullPointerException",
+          "option_c": "IllegalStateException",
+          "option_d": "ClassCastException",
+          "correct_answer": "B"
+        }
+      ]
     },
     {
-      "title": "Original Programming Tutorial 2",
-      "language": "Programming",
-      "topic": "Programming Tutorial",
+      "video_code": "V2",
+      "title": "Java Maps & HashMap",
+      "channel": "coding with john",
+      "language": "Java",
+      "topic": "Maps & HashMap",
       "duration": "",
       "difficulty": "",
-      "youtube_url": "https://youtu.be/BqQ0qR8kmw8?si=wBN1IIsIXflIN4Pj",
+      "youtube_url": "https://www.youtube.com/watch?v=H62Jfv1DJlU",
       "transcript": "",
       "summaries": [
         {
           "engine_name": "VEED",
           "summary_text": "",
           "summary_video_filename": "original_002_veed.mp4",
+          "summary_video_url": "https://github.com/Ivve33/ProgSumEval/releases/download/v1.0-dataset/original_002_veed.mp4",
           "summary_duration": "",
           "completeness_rating": null,
           "clarity_rating": null,
@@ -52,27 +100,72 @@
           "engine_name": "NotebookLM",
           "summary_text": "",
           "summary_video_filename": "original_002_notebooklm.mp4",
+          "summary_video_url": "https://github.com/Ivve33/ProgSumEval/releases/download/v1.0-dataset/original_002_notebooklm.mp4",
           "summary_duration": "",
           "completeness_rating": null,
           "clarity_rating": null,
           "coherence_rating": null
         }
       ],
-      "quiz": []
+      "quiz": [
+        {
+          "question": "What is the primary benefit of declaring a map as Map<String, Integer> myMap = new HashMap<>()?",
+          "option_a": "It makes the map's performance significantly faster.",
+          "option_b": "It allows you to switch to different Map implementations like TreeMap later without changing the rest of your code.",
+          "option_c": "It prevents the map from storing null values.",
+          "option_d": "It is the only way to use the diamond operator.",
+          "correct_answer": "B"
+        },
+        {
+          "question": "Given a Map data containing {\"KeyA\": 100}, what happens if you execute data.replace(\"KeyB\", 200)?",
+          "option_a": "A new entry {\"KeyB\": 200} is added to the map.",
+          "option_b": "The map remains unchanged because \"KeyB\" does not exist.",
+          "option_c": "The program throws a NoSuchKeyException.",
+          "option_d": "\"KeyA\" is updated to have the value 200.",
+          "correct_answer": "B"
+        },
+        {
+          "question": "Which of the following Map declarations will cause a compilation error in Java?",
+          "option_a": "Map<Integer, String> map = new HashMap<>()",
+          "option_b": "Map<String, Double> map = new HashMap<>()",
+          "option_c": "Map<String, int> map = new HashMap<>()",
+          "option_d": "Map<Boolean, String> map = new HashMap<>()",
+          "correct_answer": "C"
+        },
+        {
+          "question": "If you call map.put(\"User1\", \"Active\") and then call map.put(\"User1\", \"Idle\"), what value is returned by map.get(\"User1\")?",
+          "option_a": "Active",
+          "option_b": "Idle",
+          "option_c": "null",
+          "option_d": "An error is thrown because the key is duplicated.",
+          "correct_answer": "B"
+        },
+        {
+          "question": "Which method should you use if you want to add a key-value pair only if the key does not already exist in the map?",
+          "option_a": "put",
+          "option_b": "replace",
+          "option_c": "putIfAbsent",
+          "option_d": "containsKey",
+          "correct_answer": "C"
+        }
+      ]
     },
     {
-      "title": "Original Programming Tutorial 3",
-      "language": "Programming",
-      "topic": "Programming Tutorial",
+      "video_code": "V3",
+      "title": "Java Encapsulation",
+      "channel": "telusko",
+      "language": "Java",
+      "topic": "Encapsulation",
       "duration": "",
       "difficulty": "",
-      "youtube_url": "https://youtu.be/Ky8P70QlKNU?si=At716Ekt3uf0dWj2",
+      "youtube_url": "https://www.youtube.com/watch?v=YbqneqDIZh8",
       "transcript": "",
       "summaries": [
         {
           "engine_name": "VEED",
           "summary_text": "",
           "summary_video_filename": "original_003_veed.mp4",
+          "summary_video_url": "https://github.com/Ivve33/ProgSumEval/releases/download/v1.0-dataset/original_003_veed.mp4",
           "summary_duration": "",
           "completeness_rating": null,
           "clarity_rating": null,
@@ -82,27 +175,72 @@
           "engine_name": "NotebookLM",
           "summary_text": "",
           "summary_video_filename": "original_003_notebooklm.mp4",
+          "summary_video_url": "https://github.com/Ivve33/ProgSumEval/releases/download/v1.0-dataset/original_003_notebooklm.mp4",
           "summary_duration": "",
           "completeness_rating": null,
           "clarity_rating": null,
           "coherence_rating": null
         }
       ],
-      "quiz": []
+      "quiz": [
+        {
+          "question": "What is the primary purpose of using the private access modifier on instance variables in the context of encapsulation?",
+          "option_a": "To make the program run faster by reducing memory overhead.",
+          "option_b": "To ensure that variables can only be modified during the object's creation.",
+          "option_c": "To prevent direct access from external classes and maintain control over the data.",
+          "option_d": "To allow the variables to be shared across all instances of the class automatically.",
+          "correct_answer": "C"
+        },
+        {
+          "question": "In the Human class example, why can the method getAge() access the variable age even if age is marked as private?",
+          "option_a": "Because methods marked as public have the authority to bypass all private restrictions.",
+          "option_b": "Because private data is accessible to any method defined within the same class.",
+          "option_c": "Because the getAge() method is a special keyword in Java that overrides privacy.",
+          "option_d": "Because age is an integer, and primitive types cannot be truly hidden in Java.",
+          "correct_answer": "B"
+        },
+        {
+          "question": "Which of the following best describes the indirect access approach mentioned in the tutorial?",
+          "option_a": "Accessing variables through a secondary helper class located in the same package.",
+          "option_b": "Using public methods, getters and setters, to interact with private data.",
+          "option_c": "Assigning values to variables only within the main method of the program.",
+          "option_d": "Using the new keyword to recreate the object every time a value needs to be changed.",
+          "correct_answer": "B"
+        },
+        {
+          "question": "A developer creates a class where the age variable is private, but they do not provide a setAge() method. What is the functional result of this design?",
+          "option_a": "The age variable will cause a compilation error because it is dead code.",
+          "option_b": "The age variable becomes read-only to the outside world, assuming a getter exists.",
+          "option_c": "The variable will be automatically set to public by the Java compiler.",
+          "option_d": "External classes can still change the age by using the obj.age = value syntax.",
+          "correct_answer": "B"
+        },
+        {
+          "question": "Which real-world analogy best represents the concept of encapsulation?",
+          "option_a": "A library where anyone can walk in and move books to different shelves at any time.",
+          "option_b": "A whiteboard where anyone can write or erase information directly.",
+          "option_c": "An ATM where you interact with your bank balance through a specific interface rather than touching the cash inside directly.",
+          "option_d": "A radio that broadcasts a signal to every device in the area simultaneously.",
+          "correct_answer": "C"
+        }
+      ]
     },
     {
-      "title": "Original Programming Tutorial 4",
-      "language": "Programming",
-      "topic": "Programming Tutorial",
+      "video_code": "V4",
+      "title": "Recursion",
+      "channel": "coding with john",
+      "language": "General Programming",
+      "topic": "Recursion",
       "duration": "",
       "difficulty": "",
-      "youtube_url": "https://youtu.be/H62Jfv1DJlU?si=oXSPuyCUTRiehQSM",
+      "youtube_url": "https://www.youtube.com/watch?v=k-7jJP7QFEM",
       "transcript": "",
       "summaries": [
         {
           "engine_name": "VEED",
           "summary_text": "",
           "summary_video_filename": "original_004_veed.mp4",
+          "summary_video_url": "https://github.com/Ivve33/ProgSumEval/releases/download/v1.0-dataset/original_004_veed.mp4",
           "summary_duration": "",
           "completeness_rating": null,
           "clarity_rating": null,
@@ -112,27 +250,72 @@
           "engine_name": "NotebookLM",
           "summary_text": "",
           "summary_video_filename": "original_004_notebooklm.mp4",
+          "summary_video_url": "https://github.com/Ivve33/ProgSumEval/releases/download/v1.0-dataset/original_004_notebooklm.mp4",
           "summary_duration": "",
           "completeness_rating": null,
           "clarity_rating": null,
           "coherence_rating": null
         }
       ],
-      "quiz": []
+      "quiz": [
+        {
+          "question": "What is the primary definition of recursion in programming?",
+          "option_a": "A process where a function uses a while loop to iterate through a dataset.",
+          "option_b": "A process where a function calls itself directly or indirectly.",
+          "option_c": "A method of allocating memory for variables in the main function.",
+          "option_d": "A way to return multiple values from a single function call.",
+          "correct_answer": "B"
+        },
+        {
+          "question": "What happens to the stack when a new recursive function call is made?",
+          "option_a": "The previous activation record is deleted to make room for the new one.",
+          "option_b": "The stack is bypassed and variables are stored in global memory.",
+          "option_c": "A new activation record is maintained inside the stack above the caller's record.",
+          "option_d": "The function execution stops until the operating system clears the stack.",
+          "correct_answer": "C"
+        },
+        {
+          "question": "What role does the condition if (n == 1) play in the execution of a recursive function?",
+          "option_a": "It acts as the base case that stops recursive calls and begins the return process.",
+          "option_b": "It serves as a loop counter that resets the value of n for every activation record.",
+          "option_c": "It is a safety check that prevents the operating system from ending the program early.",
+          "option_d": "It identifies which specific record in the stack should be modified by the else block.",
+          "correct_answer": "A"
+        },
+        {
+          "question": "If a recursive function is defined to return 1 + fun(n - 1) with a base case of return 1 when n == 1, what is the result of fun(3)?",
+          "option_a": "1",
+          "option_b": "2",
+          "option_c": "3",
+          "option_d": "4",
+          "correct_answer": "C"
+        },
+        {
+          "question": "During the returning phase of recursion, what is the correct sequence of events regarding the stack?",
+          "option_a": "All activation records are popped simultaneously when the base case is met.",
+          "option_b": "Activation records are popped one by one as each function call completes and returns to its caller.",
+          "option_c": "The main function's record is popped first to allow the recursive calls to finish.",
+          "option_d": "New records are added to the stack to store the returned values of each call.",
+          "correct_answer": "B"
+        }
+      ]
     },
     {
-      "title": "Original Programming Tutorial 5",
-      "language": "Programming",
-      "topic": "Programming Tutorial",
+      "video_code": "V5",
+      "title": "Java Multiple Threads",
+      "channel": "telusko",
+      "language": "Java",
+      "topic": "Multiple Threads",
       "duration": "",
       "difficulty": "",
-      "youtube_url": "https://youtu.be/YbqneqDIZh8?si=HfkP7FGQ_KR3YXv0",
+      "youtube_url": "https://www.youtube.com/watch?v=UfMM924sBvg",
       "transcript": "",
       "summaries": [
         {
           "engine_name": "VEED",
           "summary_text": "",
           "summary_video_filename": "original_005_veed.mp4",
+          "summary_video_url": "https://github.com/Ivve33/ProgSumEval/releases/download/v1.0-dataset/original_005_veed.mp4",
           "summary_duration": "",
           "completeness_rating": null,
           "clarity_rating": null,
@@ -142,27 +325,72 @@
           "engine_name": "NotebookLM",
           "summary_text": "",
           "summary_video_filename": "original_005_notebooklm.mp4",
+          "summary_video_url": "https://github.com/Ivve33/ProgSumEval/releases/download/v1.0-dataset/original_005_notebooklm.mp4",
           "summary_duration": "",
           "completeness_rating": null,
           "clarity_rating": null,
           "coherence_rating": null
         }
       ],
-      "quiz": []
+      "quiz": [
+        {
+          "question": "In Java, when two independent objects call their respective methods in a standard main method, why do they execute one after the other rather than simultaneously?",
+          "option_a": "Java does not support multi-core processing by default.",
+          "option_b": "The JVM assigns a separate thread to every new object automatically, but they are queued.",
+          "option_c": "Standard execution happens within a single Main thread, where each instruction must finish before the next begins.",
+          "option_d": "Methods containing loops are automatically locked by the JVM to prevent data corruption.",
+          "correct_answer": "C"
+        },
+        {
+          "question": "What is the primary reason for extending the Thread class in Java?",
+          "option_a": "To allow the class to use System.out.println multiple times.",
+          "option_b": "To automatically optimize loop performance within the class.",
+          "option_c": "To transform a normal class into a thread class so its behavior can be executed concurrently.",
+          "option_d": "To ensure that the class has access to the main method's memory space.",
+          "correct_answer": "C"
+        },
+        {
+          "question": "Suppose you have a class that extends Thread and contains a method named run(). If you call obj.run() instead of obj.start() in your main program, what will happen?",
+          "option_a": "A new thread will be created, but it will execute the start() method instead.",
+          "option_b": "The code will execute on a new thread, but it will be slower.",
+          "option_c": "The run() method will execute on the current main thread, and no new thread will be started.",
+          "option_d": "The program will throw a compile-time error because run() cannot be called directly.",
+          "correct_answer": "C"
+        },
+        {
+          "question": "Which component is responsible for deciding which thread gets to execute on the CPU at any given moment?",
+          "option_a": "The Java Compiler",
+          "option_b": "The OS Scheduler",
+          "option_c": "The Garbage Collector",
+          "option_d": "The Main Method Pointer",
+          "correct_answer": "B"
+        },
+        {
+          "question": "Why does the output of two threads often appear interleaved, such as Hi, Hello, Hi, Hello?",
+          "option_a": "Because the JVM merges all loops into one single process.",
+          "option_b": "Because they are running concurrently and the OS scheduler switches between them.",
+          "option_c": "Because Java execution is always random.",
+          "option_d": "Because the main method waits for each thread to print one line.",
+          "correct_answer": "B"
+        }
+      ]
     },
     {
-      "title": "Original Programming Tutorial 6",
-      "language": "Programming",
-      "topic": "Programming Tutorial",
+      "video_code": "V6",
+      "title": "Java Collections: ArrayList",
+      "channel": "telusko",
+      "language": "Java",
+      "topic": "Collections / ArrayList",
       "duration": "",
       "difficulty": "",
-      "youtube_url": "https://youtu.be/k-7jJP7QFEM?si=heEu8mQjcNP0vNkO",
+      "youtube_url": "https://www.youtube.com/watch?v=BqQ0qR8kmw8",
       "transcript": "",
       "summaries": [
         {
           "engine_name": "VEED",
           "summary_text": "",
           "summary_video_filename": "original_006_veed.mp4",
+          "summary_video_url": "https://github.com/Ivve33/ProgSumEval/releases/download/v1.0-dataset/original_006_veed.mp4",
           "summary_duration": "",
           "completeness_rating": null,
           "clarity_rating": null,
@@ -172,27 +400,72 @@
           "engine_name": "NotebookLM",
           "summary_text": "",
           "summary_video_filename": "original_006_notebooklm.mp4",
+          "summary_video_url": "https://github.com/Ivve33/ProgSumEval/releases/download/v1.0-dataset/original_006_notebooklm.mp4",
           "summary_duration": "",
           "completeness_rating": null,
           "clarity_rating": null,
           "coherence_rating": null
         }
       ],
-      "quiz": []
+      "quiz": [
+        {
+          "question": "Why is it not possible to instantiate a Collection directly using new Collection() in Java?",
+          "option_a": "Because Collection is a final class that cannot be instantiated.",
+          "option_b": "Because Collection is an interface, and interfaces do not have their own implementation.",
+          "option_c": "Because the Collection object requires a fixed size at the time of creation.",
+          "option_d": "Because the Collection interface belongs to a restricted package that prevents instantiation.",
+          "correct_answer": "B"
+        },
+        {
+          "question": "What is the primary benefit of using Generics, such as <Integer>, when working with an ArrayList?",
+          "option_a": "It automatically increases the performance of the code at runtime.",
+          "option_b": "It allows the ArrayList to store primitive data types directly.",
+          "option_c": "It ensures type safety by catching errors at compile time instead of causing runtime exceptions.",
+          "option_d": "It allows the ArrayList to behave like a standard array with fixed length.",
+          "correct_answer": "C"
+        },
+        {
+          "question": "Suppose you want to access a specific element in a collection using its index, such as nums.get(2). Which reference type should you use for your object?",
+          "option_a": "Collection<Integer>",
+          "option_b": "Iterable<Integer>",
+          "option_c": "List<Integer>",
+          "option_d": "Set<Integer>",
+          "correct_answer": "C"
+        },
+        {
+          "question": "If you add an integer 6 to a Collection<Integer>, what is actually happening behind the scenes regarding the data type?",
+          "option_a": "The primitive int is converted into an Object because collections can only store objects.",
+          "option_b": "The number is stored as a String to ensure compatibility across different systems.",
+          "option_c": "The int is stored as a primitive to save memory space.",
+          "option_d": "The number is stored as a Float to allow for future decimal additions.",
+          "correct_answer": "A"
+        },
+        {
+          "question": "A developer forgets to use Generics and creates a Collection nums = new ArrayList();. They add both an integer 10 and a string Hello. What will happen when they try to run a loop that casts every element to an Integer?",
+          "option_a": "The program will work fine because Java automatically converts strings to integers.",
+          "option_b": "The code will fail to compile because you cannot mix types in an ArrayList.",
+          "option_c": "The program will compile but will throw a ClassCastException at runtime.",
+          "option_d": "The loop will simply skip the string element and only process the integer.",
+          "correct_answer": "C"
+        }
+      ]
     },
     {
-      "title": "Original Programming Tutorial 7",
-      "language": "Programming",
-      "topic": "Programming Tutorial",
+      "video_code": "V7",
+      "title": "Java Upcasting and Downcasting",
+      "channel": "coding with john",
+      "language": "Java",
+      "topic": "Upcasting and Downcasting",
       "duration": "",
       "difficulty": "",
-      "youtube_url": "https://youtu.be/KGhacRRMnDw?si=dR6-ZZjqh2QxqH56",
+      "youtube_url": "https://www.youtube.com/watch?v=HpuH7n9VOYk",
       "transcript": "",
       "summaries": [
         {
           "engine_name": "VEED",
           "summary_text": "",
           "summary_video_filename": "original_007_veed.mp4",
+          "summary_video_url": "https://github.com/Ivve33/ProgSumEval/releases/download/v1.0-dataset/original_007_veed.mp4",
           "summary_duration": "",
           "completeness_rating": null,
           "clarity_rating": null,
@@ -202,27 +475,72 @@
           "engine_name": "NotebookLM",
           "summary_text": "",
           "summary_video_filename": "original_007_notebooklm.mp4",
+          "summary_video_url": "https://github.com/Ivve33/ProgSumEval/releases/download/v1.0-dataset/original_007_notebooklm.mp4",
           "summary_duration": "",
           "completeness_rating": null,
           "clarity_rating": null,
           "coherence_rating": null
         }
       ],
-      "quiz": []
+      "quiz": [
+        {
+          "question": "Which of the following statements accurately describes upcasting in Java?",
+          "option_a": "It requires explicit casting syntax, such as (Animal) myDog.",
+          "option_b": "It is the process of casting a parent class object to one of its child class types.",
+          "option_c": "Java performs it implicitly and automatically because a subclass object is always considered an instance of its superclass.",
+          "option_d": "It allows a reference variable to access methods that exist only in the subclass and not the superclass.",
+          "correct_answer": "C"
+        },
+        {
+          "question": "Why does this code result in a compiler error: Animal myAnimal = new Dog(); myAnimal.growl(); where growl() is only defined in Dog?",
+          "option_a": "Because Dog objects cannot be assigned to Animal references.",
+          "option_b": "Because the reference type is Animal, and the compiler only allows access to methods defined in the Animal class.",
+          "option_c": "Because upcasting is not allowed in Java without using the instanceof operator.",
+          "option_d": "Because makeNoise() must be called before any subclass-specific methods.",
+          "correct_answer": "B"
+        },
+        {
+          "question": "In a method defined as public void doAnimalStuff(Animal animal), what is the main benefit of upcasting when passing different objects like Dog or Cat?",
+          "option_a": "It allows the method to run faster by bypassing method overriding.",
+          "option_b": "It prevents the need to write separate overloaded methods for every specific subclass of Animal.",
+          "option_c": "It automatically converts all subclass objects into the base Animal class, removing their unique properties permanently.",
+          "option_d": "It ensures that only the Animal class implementation of a method is ever executed.",
+          "correct_answer": "B"
+        },
+        {
+          "question": "If you have an Animal reference that points to a Cat object, what happens if you attempt to downcast it to a Dog using Dog myDog = (Dog) animal?",
+          "option_a": "The code will compile and run, but myDog will be null.",
+          "option_b": "The compiler will catch the error and prevent the program from running.",
+          "option_c": "The program will run and automatically treat the Cat as a Dog.",
+          "option_d": "The program will crash at runtime with a ClassCastException.",
+          "correct_answer": "D"
+        },
+        {
+          "question": "To safely perform downcasting and access subclass-specific methods without risking a runtime crash, which approach is recommended?",
+          "option_a": "Always use explicit casting because Java will ignore the cast if the types do not match.",
+          "option_b": "Use the instanceof operator to check if the object is actually an instance of the target subclass before casting.",
+          "option_c": "Perform upcasting immediately before the downcast to reset the object type.",
+          "option_d": "Wrap the cast in a method that returns the superclass type.",
+          "correct_answer": "B"
+        }
+      ]
     },
     {
-      "title": "Original Programming Tutorial 8",
-      "language": "Programming",
-      "topic": "Programming Tutorial",
+      "video_code": "V8",
+      "title": "C Pointers",
+      "channel": "programiz",
+      "language": "C",
+      "topic": "Pointers",
       "duration": "",
       "difficulty": "",
-      "youtube_url": "https://youtu.be/HpuH7n9VOYk?si=tA5sQJJwbVya52z4",
+      "youtube_url": "https://www.youtube.com/watch?v=KGhacRRMnDw",
       "transcript": "",
       "summaries": [
         {
           "engine_name": "VEED",
           "summary_text": "",
           "summary_video_filename": "original_008_veed.mp4",
+          "summary_video_url": "https://github.com/Ivve33/ProgSumEval/releases/download/v1.0-dataset/original_008_veed.mp4",
           "summary_duration": "",
           "completeness_rating": null,
           "clarity_rating": null,
@@ -232,27 +550,72 @@
           "engine_name": "NotebookLM",
           "summary_text": "",
           "summary_video_filename": "original_008_notebooklm.mp4",
+          "summary_video_url": "https://github.com/Ivve33/ProgSumEval/releases/download/v1.0-dataset/original_008_notebooklm.mp4",
           "summary_duration": "",
           "completeness_rating": null,
           "clarity_rating": null,
           "coherence_rating": null
         }
       ],
-      "quiz": []
+      "quiz": [
+        {
+          "question": "What is the primary difference between a regular variable and a pointer variable in C?",
+          "option_a": "A pointer can store much larger integer values than a regular variable.",
+          "option_b": "A regular variable stores a data value, while a pointer stores the memory address of a variable.",
+          "option_c": "Pointers are used only for mathematical calculations, while regular variables store text.",
+          "option_d": "Regular variables are stored in computer memory, but pointers are stored in CPU registers.",
+          "correct_answer": "B"
+        },
+        {
+          "question": "If you have an integer variable age and a pointer ptr that points to it, which expression correctly provides the value stored in age?",
+          "option_a": "ptr",
+          "option_b": "&ptr",
+          "option_c": "*ptr",
+          "option_d": "&age*",
+          "correct_answer": "C"
+        },
+        {
+          "question": "Consider this code: int salary = 5000; int *ptr = &salary; *ptr = salary * 2; After execution, what is the value of salary?",
+          "option_a": "5000",
+          "option_b": "10000",
+          "option_c": "The memory address of ptr.",
+          "option_d": "The code will result in a syntax error.",
+          "correct_answer": "B"
+        },
+        {
+          "question": "Which assignment is logically valid according to C pointer syntax?",
+          "option_a": "ptr = age; where ptr is a pointer and age is an integer value.",
+          "option_b": "*ptr = &age; assigning a memory address to a dereferenced pointer.",
+          "option_c": "ptr = &age; assigning the address of a variable to a pointer.",
+          "option_d": "*ptr = *age; where age is a standard integer variable.",
+          "correct_answer": "C"
+        },
+        {
+          "question": "Why is the ampersand (&) used in scanf, such as scanf(\"%d\", &age)?",
+          "option_a": "It identifies the data type of the input for the compiler.",
+          "option_b": "It instructs the compiler to store the user's input directly at the memory address where the variable is located.",
+          "option_c": "It serves as a security feature to prevent unauthorized memory access.",
+          "option_d": "It is a legacy symbol with no functional purpose in modern C programming.",
+          "correct_answer": "B"
+        }
+      ]
     },
     {
-      "title": "Original Programming Tutorial 9",
-      "language": "Programming",
-      "topic": "Programming Tutorial",
+      "video_code": "V9",
+      "title": "SQL Database with Python",
+      "channel": "jie jenn",
+      "language": "Python / SQL",
+      "topic": "SQL Database with Python",
       "duration": "",
       "difficulty": "",
-      "youtube_url": "https://youtu.be/q2SGW2VgwAM?si=ptwiO9bEAEUw7kh0",
+      "youtube_url": "https://www.youtube.com/watch?v=WQ8eem9Awt4",
       "transcript": "",
       "summaries": [
         {
           "engine_name": "VEED",
           "summary_text": "",
           "summary_video_filename": "original_009_veed.mp4",
+          "summary_video_url": "https://github.com/Ivve33/ProgSumEval/releases/download/v1.0-dataset/original_009_veed.mp4",
           "summary_duration": "",
           "completeness_rating": null,
           "clarity_rating": null,
@@ -262,27 +625,72 @@
           "engine_name": "NotebookLM",
           "summary_text": "",
           "summary_video_filename": "original_009_notebooklm.mp4",
+          "summary_video_url": "https://github.com/Ivve33/ProgSumEval/releases/download/v1.0-dataset/original_009_notebooklm.mp4",
           "summary_duration": "",
           "completeness_rating": null,
           "clarity_rating": null,
           "coherence_rating": null
         }
       ],
-      "quiz": []
+      "quiz": [
+        {
+          "question": "In the basic example, how is the conversation history provided to the AI agent to maintain context?",
+          "option_a": "The agent automatically queries the SQL database using the session_id.",
+          "option_b": "Past messages are retrieved from the database and formatted into a single string that is passed along with the new message.",
+          "option_c": "The agent uses a built-in PydanticAI Memory class that syncs with SQLite.",
+          "option_d": "The user message and agent response are stored as binary blobs and decoded during agent.run().",
+          "correct_answer": "B"
+        },
+        {
+          "question": "What is the primary architectural advantage of the advanced approach, storing the entire message list as JSON or Binary, over the basic approach?",
+          "option_a": "It allows the database to automatically validate the types of messages using SQL constraints.",
+          "option_b": "It eliminates the need for a session_id because all conversations are stored in one row.",
+          "option_c": "It reduces the complexity of retrieving and reconstructing the full conversation structure, especially for complex message types.",
+          "option_d": "It makes the database file size smaller by removing the timestamp column.",
+          "correct_answer": "C"
+        },
+        {
+          "question": "When implementing the get_history method in the advanced example, why is it necessary to use a helper function to parse the messages retrieved from the database?",
+          "option_a": "Because SQLite cannot store JSON data, so the data must be decrypted first.",
+          "option_b": "To convert the raw JSON or binary data back into specific PydanticAI data models like ModelRequest and ModelResponse.",
+          "option_c": "To filter out system prompts so the agent does not get confused.",
+          "option_d": "To translate the messages from the AI's internal language back into Python strings.",
+          "correct_answer": "B"
+        },
+        {
+          "question": "Suppose you are building a multi-turn chatbot where the agent needs to use specific tools. Why would the advanced storage method be more suitable than basic string concatenation?",
+          "option_a": "Tools can only be triggered if the history is stored in a SQLite database.",
+          "option_b": "The basic method only stores user and agent text, whereas tool calls and results are structured data that the advanced method preserves using ModelMessage objects.",
+          "option_c": "The basic method is faster, but the advanced method is the only way to enable RunSync.",
+          "option_d": "The advanced method automatically executes the tools when the history is loaded.",
+          "correct_answer": "B"
+        },
+        {
+          "question": "If you wanted to retrieve only the most recent state of a specific conversation in the advanced implementation, which SQL clause combination is used to ensure efficiency?",
+          "option_a": "GROUP BY session_id and HAVING count(*) > 1",
+          "option_b": "WHERE session_id = ? and ORDER BY timestamp DESC with LIMIT 1",
+          "option_c": "SELECT DISTINCT session_id and ORDER BY timestamp ASC",
+          "option_d": "WHERE user_message IS NOT NULL and LIMIT 5",
+          "correct_answer": "B"
+        }
+      ]
     },
     {
-      "title": "Original Programming Tutorial 10",
-      "language": "Programming",
-      "topic": "Programming Tutorial",
+      "video_code": "V10",
+      "title": "Python Object-Oriented Programming",
+      "channel": "bro code",
+      "language": "Python",
+      "topic": "Object-Oriented Programming",
       "duration": "",
       "difficulty": "",
-      "youtube_url": "https://youtu.be/WQ8eem9Awt4?si=P8WmoI43r-fOn3Fp",
+      "youtube_url": "https://www.youtube.com/watch?v=q2SGW2VgwAM",
       "transcript": "",
       "summaries": [
         {
           "engine_name": "VEED",
           "summary_text": "",
           "summary_video_filename": "original_010_veed.mp4",
+          "summary_video_url": "https://github.com/Ivve33/ProgSumEval/releases/download/v1.0-dataset/original_010_veed.mp4",
           "summary_duration": "",
           "completeness_rating": null,
           "clarity_rating": null,
@@ -292,13 +700,55 @@
           "engine_name": "NotebookLM",
           "summary_text": "",
           "summary_video_filename": "original_010_notebooklm.mp4",
+          "summary_video_url": "https://github.com/Ivve33/ProgSumEval/releases/download/v1.0-dataset/original_010_notebooklm.mp4",
           "summary_duration": "",
           "completeness_rating": null,
           "clarity_rating": null,
           "coherence_rating": null
         }
       ],
-      "quiz": []
+      "quiz": [
+        {
+          "question": "What is the primary relationship between a class and an object in Python?",
+          "option_a": "A class is a specific instance, while an object is a general template.",
+          "option_b": "A class acts as a blueprint, and an object is an instance created from that blueprint.",
+          "option_c": "Objects are used to define the logic of a class before it is compiled.",
+          "option_d": "Classes and objects are identical terms used to describe variables in Python.",
+          "correct_answer": "B"
+        },
+        {
+          "question": "Which best describes the difference between an attribute and a method?",
+          "option_a": "Attributes are what an object can do, while methods are what an object is or has.",
+          "option_b": "Attributes are internal functions, while methods are external variables.",
+          "option_c": "Attributes describe the state or characteristics of an object, while methods describe its actions.",
+          "option_d": "Methods are used only during object construction, while attributes are used after.",
+          "correct_answer": "C"
+        },
+        {
+          "question": "When defining the __init__ method, the constructor, what is the purpose of the self parameter?",
+          "option_a": "It refers to the class itself so that all objects share the same memory address.",
+          "option_b": "It is a placeholder that must be manually passed as an argument when creating a new object.",
+          "option_c": "It allows the constructor to access and assign values to the specific object being created.",
+          "option_d": "It is a keyword that prevents other modules from importing the class attributes.",
+          "correct_answer": "C"
+        },
+        {
+          "question": "Suppose you have a class Car with a method drive(self). If you create car_1 = Car() and car_2 = Car(), then call car_1.drive(), how does Python know which car is driving?",
+          "option_a": "Python executes the method for all instances of the Car class simultaneously.",
+          "option_b": "The self parameter is automatically replaced by the specific object, car_1, calling the method.",
+          "option_c": "You must pass car_1 as an argument inside the parentheses: car_1.drive(car_1).",
+          "option_d": "Python uses the most recently created object by default.",
+          "correct_answer": "B"
+        },
+        {
+          "question": "You want to create a class Smartphone where every phone has a unique battery_level but they all share the same recharge action. Where should these be defined?",
+          "option_a": "battery_level should be a parameter in the __init__ method, and recharge should be a standard method within the class.",
+          "option_b": "recharge should be a variable in the __init__ method, and battery_level should be a method.",
+          "option_c": "Both must be defined as variables outside of any methods to ensure they are unique.",
+          "option_d": "Both must be defined within the __init__ method to allow them to interact with the user.",
+          "correct_answer": "A"
+        }
+      ]
     }
   ]
 }

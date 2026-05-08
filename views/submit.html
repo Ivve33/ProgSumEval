@@ -7,25 +7,127 @@
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <main class="page">
-    <nav class="top-nav">
-      <a href="/">ProgSumEval</a>
-      <a href="/browse">Browse Benchmark</a>
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a class="brand" href="/">ProgSumEval</a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/browse">Browse</a>
+        <a href="/results">Results</a>
+        <a href="/submit">Submit</a>
+      </div>
     </nav>
+  </header>
 
-    <h1>Submit Video Request</h1>
+  <main class="page">
+    <section class="page-heading">
+      <p class="eyebrow">Offline request queue</p>
+      <h1>Submit Video Request</h1>
+      <p>New video requests are stored for offline review. The system does not generate summaries automatically.</p>
+    </section>
 
-    <form id="requestForm" class="form">
-      <label for="youtubeUrl">YouTube URL or video request</label>
-      <input id="youtubeUrl" name="youtube_url" type="url" required placeholder="https://www.youtube.com/watch?v=...">
+    <section class="panel">
+      <div class="section-heading">
+        <p class="eyebrow">YouTube discovery</p>
+        <h2>Search YouTube for a Programming Tutorial</h2>
+        <p>Search results are filtered to prioritize 10-15 minute programming tutorial videos. Selected videos are submitted for offline review.</p>
+      </div>
 
-      <label for="requesterEmail">Email optional</label>
-      <input id="requesterEmail" name="requester_email" type="email" placeholder="optional@email.com">
+      <form id="youtubeSearchForm" class="search-form">
+        <div>
+          <label for="searchTopic">Search topic</label>
+          <input id="searchTopic" name="q" type="search" placeholder="e.g., Java exceptions, Python OOP, C pointers">
+        </div>
 
-      <button type="submit">Submit Request</button>
-    </form>
+        <div>
+          <label for="searchLanguage">Programming language</label>
+          <select id="searchLanguage" name="language">
+            <option value="">Any</option>
+            <option value="Java">Java</option>
+            <option value="Python">Python</option>
+            <option value="C">C</option>
+            <option value="C++">C++</option>
+            <option value="JavaScript">JavaScript</option>
+            <option value="SQL">SQL</option>
+          </select>
+        </div>
 
-    <p id="formMessage" class="message" aria-live="polite"></p>
+        <button type="submit">Search</button>
+      </form>
+
+      <p id="searchMessage" class="message" aria-live="polite"></p>
+      <section id="searchResults" class="search-results" aria-live="polite"></section>
+      <section id="selectedVideoPanel" class="selected-video-panel" aria-live="polite"></section>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading">
+        <p class="eyebrow">Manual fallback</p>
+        <h2>Submit a YouTube URL Manually</h2>
+        <p>Use this option if YouTube search is unavailable or you already have a public tutorial link.</p>
+      </div>
+
+      <form id="manualRequestForm" class="form">
+        <label for="manualYoutubeUrl">YouTube URL</label>
+        <input id="manualYoutubeUrl" name="youtube_url" type="url" required placeholder="https://www.youtube.com/watch?v=...">
+
+        <label for="manualRequesterEmail">Email optional</label>
+        <input id="manualRequesterEmail" name="requester_email" type="email" placeholder="name@example.com">
+
+        <button type="submit">Submit Manual Request</button>
+        <p id="manualFormMessage" class="message" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading">
+        <p class="eyebrow">Stored for later processing</p>
+        <h2>Offline Review Pipeline</h2>
+        <p>Submitted videos enter a request queue for offline benchmark preparation and review.</p>
+      </div>
+      <div class="pipeline">
+        <div class="pipeline-step"><span>1</span><p>Request received</p></div>
+        <div class="pipeline-step"><span>2</span><p>Transcript extraction</p></div>
+        <div class="pipeline-step"><span>3</span><p>Summary generation using selected tools</p></div>
+        <div class="pipeline-step"><span>4</span><p>Quiz generation</p></div>
+        <div class="pipeline-step"><span>5</span><p>Human/benchmark review</p></div>
+        <div class="pipeline-step"><span>6</span><p>Added to benchmark</p></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading">
+        <p class="eyebrow">Example preview only</p>
+        <h2>How results will appear after review</h2>
+      </div>
+      <div class="sample-comparison benchmark-preview">
+        <article class="metric-card">
+          <h3>Original tutorial</h3>
+          <p>Source video metadata and quiz baseline.</p>
+        </article>
+        <article class="metric-card">
+          <h3>VEED summary</h3>
+          <p>Summary video and aggregate evaluation metrics.</p>
+        </article>
+        <article class="metric-card">
+          <h3>NotebookLM summary</h3>
+          <p>Summary video and aggregate evaluation metrics.</p>
+        </article>
+        <article class="metric-card">
+          <h3>Quiz questions</h3>
+          <p>Five programming comprehension questions.</p>
+        </article>
+        <article class="metric-card">
+          <h3>Quality ratings</h3>
+          <p>Completeness, clarity, and coherence averages.</p>
+        </article>
+        <article class="metric-card">
+          <h3>Benchmark results</h3>
+          <p>Per-video and engine-level comparison tables.</p>
+        </article>
+      </div>
+      <p class="note">Example preview only. These results are not generated from the submitted request.</p>
+    </section>
   </main>
 
   <script src="/js/submit.js"></script>

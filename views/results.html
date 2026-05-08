@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Benchmark Results | ProgSumEval</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a class="brand" href="/">ProgSumEval</a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/browse">Browse</a>
+        <a href="/results">Results</a>
+        <a href="/submit">Submit</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="page wide-page">
+    <section class="page-heading">
+      <p class="eyebrow">Evaluation results</p>
+      <h1>Benchmark Results</h1>
+      <p>Aggregated quiz and rating outcomes from the offline benchmark evaluation records.</p>
+    </section>
+
+    <section id="overviewCards" class="stats-grid" aria-live="polite"></section>
+
+    <section class="panel">
+      <div class="section-heading">
+        <p class="eyebrow">Summary records only</p>
+        <h2>Engine-Level Comparison</h2>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Engine</th>
+              <th>Count</th>
+              <th>Avg Quiz Score</th>
+              <th>Avg Difference Score</th>
+              <th>Avg Completeness</th>
+              <th>Avg Clarity</th>
+              <th>Avg Coherence</th>
+            </tr>
+          </thead>
+          <tbody id="engineTable"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading">
+        <p class="eyebrow">Original and summary records</p>
+        <h2>Per-Video Results</h2>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Video</th>
+              <th>Topic</th>
+              <th>Model</th>
+              <th>Count</th>
+              <th>Avg Quiz Score</th>
+              <th>Avg Difference Score</th>
+              <th>Avg Completeness</th>
+              <th>Avg Clarity</th>
+              <th>Avg Coherence</th>
+            </tr>
+          </thead>
+          <tbody id="videoTable"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading">
+        <p class="eyebrow">Imported records</p>
+        <h2>Raw Evaluation Records</h2>
+      </div>
+      <div class="table-wrap raw-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Participant</th>
+              <th>Form</th>
+              <th>Video ID</th>
+              <th>Video Type</th>
+              <th>Model</th>
+              <th>Quiz Score</th>
+              <th>Difference Score</th>
+              <th>Completeness</th>
+              <th>Clarity</th>
+              <th>Coherence</th>
+            </tr>
+          </thead>
+          <tbody id="rawTable"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="/js/results.js"></script>
+</body>
+</html>

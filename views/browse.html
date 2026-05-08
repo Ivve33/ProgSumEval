@@ -7,16 +7,29 @@
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <main class="page">
-    <nav class="top-nav">
-      <a href="/">ProgSumEval</a>
-      <a href="/submit">Submit Request</a>
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a class="brand" href="/">ProgSumEval</a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/browse">Browse</a>
+        <a href="/results">Results</a>
+        <a href="/submit">Submit</a>
+      </div>
     </nav>
+  </header>
 
-    <h1>Browse Benchmark</h1>
+  <main class="page">
+    <section class="page-heading">
+      <p class="eyebrow">Original tutorial set</p>
+      <h1>Browse Benchmark</h1>
+      <p>Search the 10 original YouTube programming tutorials included in the offline benchmark.</p>
+    </section>
 
-    <label class="search-label" for="searchInput">Search videos</label>
-    <input id="searchInput" class="search-input" type="search" placeholder="Search by title, language, topic, or difficulty">
+    <section class="panel">
+      <label class="search-label" for="searchInput">Search videos</label>
+      <input id="searchInput" class="search-input" type="search" placeholder="Search title, code, channel, language, topic, or difficulty">
+    </section>
 
     <section id="videoCards" class="card-grid" aria-live="polite"></section>
   </main>

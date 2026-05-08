@@ -1,8 +1,12 @@
+require("dotenv").config();
+
 const express = require("express");
 const path = require("path");
 const { initializeDatabase } = require("./db");
 const videoRoutes = require("./routes/videos");
 const requestRoutes = require("./routes/requests");
+const resultRoutes = require("./routes/results");
+const youtubeRoutes = require("./routes/youtube");
 
 const app = express();
 const PORT = 3000;
@@ -23,6 +27,10 @@ app.get("/browse", (req, res) => {
   res.sendFile(path.join(viewsDirectory, "browse.html"));
 });
 
+app.get("/results", (req, res) => {
+  res.sendFile(path.join(viewsDirectory, "results.html"));
+});
+
 app.get("/submit", (req, res) => {
   res.sendFile(path.join(viewsDirectory, "submit.html"));
 });
@@ -32,7 +40,9 @@ app.get("/video/:id", (req, res) => {
 });
 
 app.use("/api/videos", videoRoutes);
+app.use("/api/results", resultRoutes);
 app.use("/api/requests", requestRoutes);
+app.use("/api/youtube", youtubeRoutes);
 
 initializeDatabase((error) => {
   if (error) {

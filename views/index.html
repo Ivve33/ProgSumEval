@@ -7,13 +7,52 @@
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a class="brand" href="/">ProgSumEval</a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/browse">Browse</a>
+        <a href="/results">Results</a>
+        <a href="/submit">Submit</a>
+      </div>
+    </nav>
+  </header>
+
   <main class="page">
-    <section class="intro">
+    <section class="hero-panel">
+      <p class="eyebrow">Offline benchmark browser</p>
       <h1>ProgSumEval</h1>
-      <p>A benchmark browser for evaluating AI-generated programming video summaries.</p>
-      <div class="actions">
-        <a class="button" href="/browse">Browse Benchmark</a>
-        <a class="button secondary" href="/submit">Submit Video Request</a>
+      <p class="lead">ProgSumEval is a benchmark browser for evaluating AI-generated summaries of programming tutorial videos.</p>
+      <p>This website browses existing benchmark data, quiz questions, and evaluation results. It is not a live AI summarization tool, and it does not generate summaries automatically.</p>
+    </section>
+
+    <section class="action-grid" aria-label="Primary actions">
+      <a class="action-card" href="/browse">
+        <span>Browse Benchmark</span>
+        <small>Review the 10 original programming tutorials and their summary videos.</small>
+      </a>
+      <a class="action-card" href="/results">
+        <span>View Benchmark Results</span>
+        <small>Compare quiz outcomes and quality ratings across summary engines.</small>
+      </a>
+      <a class="action-card" href="/submit">
+        <span>Submit Video Request</span>
+        <small>Store a new tutorial request for offline review.</small>
+      </a>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading">
+        <p class="eyebrow">Benchmark pipeline</p>
+        <h2>Evaluation Flow</h2>
+      </div>
+      <div class="pipeline">
+        <div class="pipeline-step"><span>1</span><p>Original programming tutorials</p></div>
+        <div class="pipeline-step"><span>2</span><p>AI-generated summaries</p></div>
+        <div class="pipeline-step"><span>3</span><p>Quiz-based evaluation</p></div>
+        <div class="pipeline-step"><span>4</span><p>Quality ratings</p></div>
+        <div class="pipeline-step"><span>5</span><p>Benchmark results</p></div>
       </div>
     </section>
   </main>
