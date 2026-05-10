@@ -1,6 +1,8 @@
-# ProgSumEval
+# VidSumEval
 
-ProgSumEval is a Node.js, Express, and SQLite benchmark browser for evaluating AI-generated summaries of programming tutorial videos.
+VidSumEval is a Node.js, Express, and SQLite benchmark browser for evaluating AI-generated summaries of programming tutorial videos.
+
+The public tool name used in the paper and user interface is VidSumEval. The GitHub repository and deployment URL may still use ProgSumEval for continuity.
 
 This is not a live summarization tool. It is an offline benchmark browser. The benchmark data, summary videos, quizzes, and evaluation results are prepared offline and then browsed through the website.
 
