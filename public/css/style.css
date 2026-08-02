@@ -271,6 +271,48 @@ button.secondary {
   font-size: 0.94rem;
 }
 
+.key-insight {
+  border-left: 4px solid #244f75;
+}
+
+.key-insight p {
+  max-width: 900px;
+}
+
+.key-insight-comparisons {
+  display: grid;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.key-insight-row {
+  display: grid;
+  grid-template-columns: minmax(140px, 1fr) repeat(auto-fit, minmax(150px, 1fr));
+  gap: 8px 14px;
+  align-items: center;
+  padding: 10px 12px;
+  border: 1px solid #d9ded4;
+  border-radius: 4px;
+  background: #f8f9f6;
+}
+
+.key-insight-row strong {
+  color: #244f75;
+}
+
+.key-insight-row.secondary {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: #ffffff;
+  font-size: 0.94rem;
+}
+
+.key-insight-note {
+  margin: 12px 0 0;
+  color: #52616d;
+  font-size: 0.92rem;
+}
+
 .search-label,
 .search-form label,
 .selected-email-group label,

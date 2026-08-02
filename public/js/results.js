@@ -1,4 +1,9 @@
 const overviewCards = document.getElementById("overviewCards");
+const keyInsightHeading = document.getElementById("keyInsightHeading");
+const keyInsightSummary = document.getElementById("keyInsightSummary");
+const keyInsightComparisons = document.getElementById("keyInsightComparisons");
+const keyInsightDifference = document.getElementById("keyInsightDifference");
+const keyInsightNote = document.getElementById("keyInsightNote");
 const engineTable = document.getElementById("engineTable");
 const videoTable = document.getElementById("videoTable");
 const rawTable = document.getElementById("rawTable");
@@ -32,6 +37,67 @@ function renderOverview(overview) {
     card.appendChild(caption);
     overviewCards.appendChild(card);
   });
+}
+
+function formatInsightValue(value, unit) {
+  if (value === null || value === undefined || value === "") {
+    return "-";
+  }
+
+  return `${Number(value).toFixed(2)}${unit || ""}`;
+}
+
+function createInsightRow(comparison, className) {
+  const row = document.createElement("div");
+  row.className = className;
+
+  const label = document.createElement("strong");
+  label.textContent = comparison.metric;
+  row.appendChild(label);
+
+  if (!Array.isArray(comparison.values) || comparison.values.length === 0) {
+    const emptyValue = document.createElement("span");
+    emptyValue.textContent = "No available values";
+    row.appendChild(emptyValue);
+    return row;
+  }
+
+  comparison.values.forEach((item) => {
+    const value = document.createElement("span");
+    value.textContent = `${item.model} ${formatInsightValue(item.value, item.unit)}`;
+    row.appendChild(value);
+  });
+
+  return row;
+}
+
+function renderKeyInsight(insight) {
+  const fallbackInsight = {
+    title: "Key Insight",
+    summary: "No evaluation records are currently available for comparison.",
+    comparisons: [],
+    difference_score: null,
+    note: "Descriptive averages only. No statistical significance testing was performed.",
+  };
+  const insightToRender = insight || fallbackInsight;
+
+  keyInsightHeading.textContent = insightToRender.title || fallbackInsight.title;
+  keyInsightSummary.textContent = insightToRender.summary || fallbackInsight.summary;
+  keyInsightComparisons.replaceChildren();
+  keyInsightDifference.replaceChildren();
+  keyInsightNote.textContent = insightToRender.note || fallbackInsight.note;
+
+  if (!Array.isArray(insightToRender.comparisons) || insightToRender.comparisons.length === 0) {
+    return;
+  }
+
+  insightToRender.comparisons.forEach((comparison) => {
+    keyInsightComparisons.appendChild(createInsightRow(comparison, "key-insight-row"));
+  });
+
+  if (insightToRender.difference_score) {
+    keyInsightDifference.appendChild(createInsightRow(insightToRender.difference_score, "key-insight-row secondary"));
+  }
 }
 
 function renderEngineRows(rows) {
@@ -94,6 +160,7 @@ fetch("/api/results")
   .then((response) => response.json())
   .then((data) => {
     renderOverview(data.overview);
+    renderKeyInsight(data.key_insight);
     renderEngineRows(data.by_engine);
     renderVideoRows(data.by_video);
     renderRawRows(data.raw_records);
