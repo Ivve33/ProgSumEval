@@ -3,7 +3,7 @@
 VidSumEval is public, functional, and reusable.
 
 - Demo: https://progsumeval.onrender.com
-- Source: https://github.com/Ivve33/ProgSumEval
+- Source: https://github.com/Ivve33/VidSumEval
 - Dataset DOI: https://doi.org/10.5281/zenodo.21763079
 
 ## Reproduction Status

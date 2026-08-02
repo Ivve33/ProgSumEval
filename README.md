@@ -4,7 +4,7 @@
 
 VidSumEval is a Node.js, Express, and SQLite benchmark browser for evaluating AI-generated summaries of programming tutorial videos.
 
-The public tool name used in the paper and UI is VidSumEval. The GitHub repository and deployment URL may still use ProgSumEval for continuity.
+The public tool, source-code package, and benchmark are named VidSumEval.
 
 This is not a live summarization tool. It is an offline benchmark browser. Benchmark data, summary videos, quizzes, and evaluation results are prepared offline.
 
@@ -16,7 +16,7 @@ This is not a live summarization tool. It is an offline benchmark browser. Bench
 
 Deployed demo: https://progsumeval.onrender.com
 
-Source repository: https://github.com/Ivve33/ProgSumEval
+Source repository: https://github.com/Ivve33/VidSumEval
 
 Dataset archive / DOI: https://doi.org/10.5281/zenodo.21763079
 
@@ -72,7 +72,7 @@ npm.cmd start
 For macOS/Linux:
 
 ```bash
-cd ProgSumEval
+cd VidSumEval
 ls package.json
 npm install
 npm run seed

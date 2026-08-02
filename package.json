@@ -1,5 +1,5 @@
 {
-  "name": "progsumeval",
+  "name": "vidsumeval",
   "version": "1.1.0",
   "description": "A benchmark browser for evaluating AI-generated programming video summaries.",
   "main": "src/server.js",
@@ -11,16 +11,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Ivve33/ProgSumEval.git"
+    "url": "git+https://github.com/Ivve33/VidSumEval.git"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "type": "commonjs",
   "bugs": {
-    "url": "https://github.com/Ivve33/ProgSumEval/issues"
+    "url": "https://github.com/Ivve33/VidSumEval/issues"
   },
-  "homepage": "https://github.com/Ivve33/ProgSumEval#readme",
+  "homepage": "https://github.com/Ivve33/VidSumEval#readme",
   "dependencies": {
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
