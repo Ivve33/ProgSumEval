@@ -29,3 +29,19 @@ The following pages work without any API key:
 - /browse
 - /video/1
 - /results
+
+## Current Benchmark Behavior
+
+- `/video/:id` displays quiz questions as an interactive multiple-choice quiz.
+- Correct quiz answers are hidden until the quiz is submitted.
+- Quiz grading is performed server-side after submission.
+- Interactive quiz attempts are not persisted.
+- `/results` includes a dynamically generated Key Insight.
+- The Key Insight compares Quiz Score, Completeness, Clarity, Coherence, and Difference Score from stored evaluation records.
+- The Key Insight is descriptive only. No statistical significance testing is performed.
+
+## Offline Boundary
+
+VidSumEval does not generate VEED or NotebookLM summaries live. Benchmark data, summary media references, quizzes, and evaluation records are prepared offline.
+
+Submit mode stores tutorial requests for offline review. YouTube Data API v3 remains optional and is only used for YouTube search on the Submit page.

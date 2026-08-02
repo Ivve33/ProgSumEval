@@ -50,7 +50,8 @@ Recommended resources:
 - `public/`: CSS, JavaScript, and static assets.
 - `public/videos/`: optional local MP4 location for summary videos.
 - `README.md`: artifact setup and inspection instructions.
-- `LICENSE`: source code and dataset/documentation license notes.
+- `LICENSE`: MIT source code license.
+- `DATA_LICENSE.md`: CC BY 4.0 dataset and documentation license notice.
 
 ## Quick Start
 
@@ -243,11 +244,23 @@ MP4 files are ignored by Git. For deployment, the app can use external `summary_
 - 50 quiz questions
 - 60 evaluation records
 
+## Interactive Quiz
+
+Quiz questions on each video details page are displayed as an interactive multiple-choice quiz. Correct answers are not included in the initial video-details API response.
+
+Grading occurs server-side only after submission. The page displays the score after submission, then shows correct and incorrect answers. Interactive attempts are not stored in the database.
+
+Interactive quiz scores are a browsing and educational feature. They are not part of the original 20-participant evaluation records imported from `data/results.xlsx`.
+
 ## Results Calculation
 
 Difference Score = Summary Quiz Score - Original Quiz Score within the same participant/form.
 
 Original rows have no difference score. Summary rows are aggregated by model and video in the website API.
+
+The Results page includes a dynamically generated Key Insight. It compares Quiz Score, Completeness, Clarity, Coherence, and Difference Score using values calculated from the stored evaluation records.
+
+The Key Insight is descriptive only. No statistical significance test is performed, and the insight should not be interpreted as proving universal model superiority.
 
 ## API Routes
 
@@ -299,11 +312,11 @@ Stop the process using port 3000 or run the app with a different `PORT` environm
 
 ## License
 
-Source code: MIT License.
+Source code: MIT License. See `LICENSE`.
 
-Dataset and documentation: CC BY 4.0 unless otherwise noted.
+Original dataset content and project documentation created by the VidSumEval authors: Creative Commons Attribution 4.0 International, identified as CC BY 4.0. See `DATA_LICENSE.md`.
 
-Original YouTube videos are referenced by URL only and are not redistributed. They remain under their original owners' terms.
+Original YouTube videos are referenced by URL only and are not redistributed or re-licensed. Third-party services, trademarks, externally generated media, and externally hosted media remain under their respective owners' and providers' terms.
 
 ## Notes for Artifact Reviewers
 
