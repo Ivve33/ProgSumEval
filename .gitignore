@@ -1,7 +1,13 @@
 node_modules/
 npm-debug.log*
 .env
+.DS_Store
+*.tmp
 database/*.db
+database/*.db-wal
+database/*.db-shm
+*.sqlite
+*.sqlite3
 server*.log
 public/videos/*.mp4
 /public/videos/*.mp4

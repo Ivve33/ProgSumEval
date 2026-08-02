@@ -9,7 +9,7 @@ const resultRoutes = require("./routes/results");
 const youtubeRoutes = require("./routes/youtube");
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 const publicDirectory = path.join(__dirname, "..", "public");
 const videosDirectory = path.join(publicDirectory, "videos");
@@ -51,6 +51,6 @@ initializeDatabase((error) => {
   }
 
   app.listen(PORT, () => {
-    console.log(`ProgSumEval server is running at http://localhost:${PORT}`);
+    console.log(`VidSumEval server is running at http://localhost:${PORT}`);
   });
 });

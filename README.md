@@ -163,6 +163,21 @@ Then open:
 http://localhost:3000
 ```
 
+By default, the server uses port 3000. To run on a custom port, set the `PORT` environment variable before starting the app.
+
+Windows:
+
+```powershell
+$env:PORT="3100"
+npm.cmd start
+```
+
+macOS/Linux:
+
+```bash
+PORT=3100 npm start
+```
+
 ## Main Pages to Check
 
 - `/`: Home page with project overview, citation information, and benchmark entry points.
@@ -280,7 +295,7 @@ npm install --build-from-source=sqlite3
 
 ### F. Port already in use
 
-Stop the process using port 3000 or run the app with a different `PORT` environment variable if supported.
+Stop the process using port 3000 or run the app with a different `PORT` environment variable.
 
 ## License
 
