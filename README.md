@@ -18,7 +18,7 @@ Deployed demo: https://progsumeval.onrender.com
 
 Source repository: https://github.com/Ivve33/ProgSumEval
 
-Dataset archive / DOI: https://doi.org/10.5281/zenodo.20076164
+Dataset archive / DOI: https://doi.org/10.5281/zenodo.21763079
 
 The deployed demo can be used directly without local installation. Local installation is provided for reviewers who want to rebuild the database and run the tool from source.
 
@@ -62,7 +62,7 @@ After downloading and extracting the artifact:
 For Windows PowerShell:
 
 ```powershell
-cd ProgSumEval
+cd VidSumEval
 dir package.json
 npm.cmd install
 npm.cmd run seed
@@ -240,7 +240,7 @@ MP4 files are ignored by Git. For deployment, the app can use external `summary_
 ## Data Model
 
 - 10 original YouTube video references
-- 20 AI-generated summary MP4 videos
+- 20 AI-generated summary records with local or externally hosted video references
 - 50 quiz questions
 - 60 evaluation records
 
@@ -327,3 +327,18 @@ The easiest way to inspect the artifact is:
 3. For local reproduction, run install, seed, and start from the project root.
 
 The YouTube API key is not required for reviewing the main benchmark functionality.
+
+## Citation
+
+VidSumEval Benchmark Dataset, Version 1.1.0, Zenodo.
+Artifact DOI: https://doi.org/10.5281/zenodo.21763079
+
+Associated paper:
+
+Osama AlGhamdi, Ameer AlGhamdi, Faisal Alorabi,
+Mohammad D. Alahmadi, Abdulmalik Alzahrani,
+and Abdullah Almazroui.
+“VidSumEval: A Web Platform and Benchmark for Evaluating
+AI-Generated Programming Video Summaries.”
+ASE 2026.
+Paper DOI: https://doi.org/10.1145/3832783.3834594
