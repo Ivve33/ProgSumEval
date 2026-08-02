@@ -420,6 +420,69 @@ dd {
   background: #fbfcfa;
 }
 
+.quiz-options {
+  display: grid;
+  gap: 10px;
+}
+
+.quiz-choice {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 10px 12px;
+  border: 1px solid #d9ded4;
+  border-radius: 4px;
+  background: #ffffff;
+}
+
+.quiz-choice input {
+  margin-top: 4px;
+}
+
+.quiz-choice:has(input:checked) {
+  border-color: #244f75;
+  background: #eef4f8;
+}
+
+.quiz-choice:has(input:disabled) {
+  cursor: default;
+}
+
+.quiz-choice.is-correct-answer {
+  border-color: #4f8a65;
+  background: #eef8f1;
+}
+
+.quiz-choice.is-incorrect-answer {
+  border-color: #b65b5f;
+  background: #fbefef;
+}
+
+.quiz-choice.is-actual-correct {
+  font-weight: 700;
+}
+
+.quiz-feedback,
+.quiz-message,
+.quiz-score-summary {
+  margin: 12px 0 0;
+  font-weight: 700;
+}
+
+.quiz-actions {
+  margin-top: 18px;
+}
+
+.quiz-actions button:disabled {
+  border-color: #8b98a3;
+  background: #8b98a3;
+  cursor: not-allowed;
+}
+
+.is-hidden {
+  display: none;
+}
+
 .answer-label,
 .note,
 .empty-inline {

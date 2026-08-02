@@ -3,6 +3,12 @@ const summariesContainer = document.getElementById("summariesContainer");
 const quizContainer = document.getElementById("quizContainer");
 const transcriptContainer = document.getElementById("transcriptContainer");
 const videoId = window.location.pathname.split("/").pop();
+const quizOptions = [
+  ["A", "option_a"],
+  ["B", "option_b"],
+  ["C", "option_c"],
+  ["D", "option_d"],
+];
 
 function addText(parent, tagName, text, className) {
   const element = document.createElement(tagName);
@@ -161,6 +167,131 @@ function renderSummaries(summaries, evaluation) {
   summariesContainer.appendChild(grid);
 }
 
+function createQuizChoice(quiz, optionValue, optionField) {
+  const choiceId = `quiz-${quiz.id}-${optionValue}`;
+  const label = document.createElement("label");
+  label.className = "quiz-choice";
+  label.setAttribute("for", choiceId);
+
+  const input = document.createElement("input");
+  input.id = choiceId;
+  input.type = "radio";
+  input.name = `quiz-${quiz.id}`;
+  input.value = optionValue;
+  input.dataset.quizId = String(quiz.id);
+
+  const choiceText = document.createElement("span");
+  choiceText.textContent = `${optionValue}. ${quiz[optionField]}`;
+
+  label.appendChild(input);
+  label.appendChild(choiceText);
+  return label;
+}
+
+function collectQuizAnswers(quizzes) {
+  const answers = {};
+  const missingQuizIds = [];
+
+  quizzes.forEach((quiz) => {
+    const selectedInput = quizContainer.querySelector(`input[name="quiz-${quiz.id}"]:checked`);
+
+    if (!selectedInput) {
+      missingQuizIds.push(quiz.id);
+      return;
+    }
+
+    answers[String(quiz.id)] = selectedInput.value;
+  });
+
+  return { answers, missingQuizIds };
+}
+
+function setQuizMessage(messageElement, text, type) {
+  messageElement.textContent = text;
+  messageElement.className = type ? `quiz-message ${type}` : "quiz-message";
+}
+
+function showQuizResults(gradingResult, scoreElement, messageElement, submitButton) {
+  const inputs = quizContainer.querySelectorAll("input[type=\"radio\"]");
+
+  inputs.forEach((input) => {
+    input.disabled = true;
+  });
+
+  gradingResult.results.forEach((result) => {
+    const article = quizContainer.querySelector(`[data-quiz-id="${result.quiz_id}"]`);
+
+    if (!article) {
+      return;
+    }
+
+    const selectedInput = article.querySelector(`input[value="${result.selected_answer}"]`);
+    const correctInput = article.querySelector(`input[value="${result.correct_answer}"]`);
+    const feedback = article.querySelector(".quiz-feedback");
+
+    if (selectedInput) {
+      selectedInput.closest(".quiz-choice").classList.add(
+        result.is_correct ? "is-correct-answer" : "is-incorrect-answer"
+      );
+    }
+
+    if (!result.is_correct && correctInput) {
+      correctInput.closest(".quiz-choice").classList.add("is-correct-answer", "is-actual-correct");
+    }
+
+    if (feedback) {
+      feedback.className = result.is_correct ? "quiz-feedback success" : "quiz-feedback error";
+      feedback.textContent = result.is_correct
+        ? `Correct. Selected answer ${result.selected_answer} is the correct answer.`
+        : `Incorrect. You selected ${result.selected_answer}. Correct answer: ${result.correct_answer}.`;
+    }
+  });
+
+  scoreElement.textContent = `Score: ${gradingResult.score}/${gradingResult.total}`;
+  scoreElement.className = "quiz-score-summary";
+  setQuizMessage(messageElement, "", "");
+  submitButton.textContent = "Quiz Submitted";
+  submitButton.disabled = true;
+}
+
+function submitQuiz(quizzes, messageElement, scoreElement, submitButton) {
+  const { answers, missingQuizIds } = collectQuizAnswers(quizzes);
+
+  if (missingQuizIds.length > 0) {
+    setQuizMessage(messageElement, "Please answer all questions before submitting.", "error");
+    return;
+  }
+
+  submitButton.disabled = true;
+  submitButton.textContent = "Submitting...";
+  setQuizMessage(messageElement, "", "");
+
+  fetch(`/api/videos/${videoId}/quiz/grade`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ answers }),
+  })
+    .then((response) => {
+      return response.json().then((data) => {
+        if (!response.ok) {
+          throw new Error(data.error || "Could not grade quiz.");
+        }
+
+        return data;
+      });
+    })
+    .then((data) => {
+      showQuizResults(data, scoreElement, messageElement, submitButton);
+    })
+    .catch((error) => {
+      setQuizMessage(messageElement, error.message || "Could not grade quiz.", "error");
+      submitButton.disabled = false;
+      submitButton.textContent = "Submit Quiz";
+    });
+}
+
 function renderQuiz(quizzes) {
   const heading = document.createElement("div");
   heading.className = "section-heading";
@@ -176,14 +307,36 @@ function renderQuiz(quizzes) {
   quizzes.forEach((quiz, index) => {
     const article = document.createElement("article");
     article.className = "quiz-item";
+    article.dataset.quizId = String(quiz.id);
     addText(article, "h3", `Q${index + 1}. ${quiz.question}`);
-    addText(article, "p", `A. ${quiz.option_a}`);
-    addText(article, "p", `B. ${quiz.option_b}`);
-    addText(article, "p", `C. ${quiz.option_c}`);
-    addText(article, "p", `D. ${quiz.option_d}`);
-    addText(article, "p", `Correct answer: ${quiz.correct_answer}`, "answer-label");
+
+    const optionsGroup = document.createElement("div");
+    optionsGroup.className = "quiz-options";
+    optionsGroup.setAttribute("role", "radiogroup");
+    optionsGroup.setAttribute("aria-label", `Question ${index + 1} answer choices`);
+
+    quizOptions.forEach(([optionValue, optionField]) => {
+      optionsGroup.appendChild(createQuizChoice(quiz, optionValue, optionField));
+    });
+
+    article.appendChild(optionsGroup);
+    addText(article, "p", "", "quiz-feedback");
     quizContainer.appendChild(article);
   });
+
+  const scoreElement = addText(quizContainer, "p", "", "quiz-score-summary is-hidden");
+  const messageElement = addText(quizContainer, "p", "", "quiz-message");
+  messageElement.setAttribute("aria-live", "polite");
+
+  const actions = document.createElement("div");
+  actions.className = "quiz-actions";
+
+  const submitButton = document.createElement("button");
+  submitButton.type = "button";
+  submitButton.textContent = "Submit Quiz";
+  submitButton.addEventListener("click", () => submitQuiz(quizzes, messageElement, scoreElement, submitButton));
+  actions.appendChild(submitButton);
+  quizContainer.appendChild(actions);
 }
 
 function renderTranscript(transcript) {

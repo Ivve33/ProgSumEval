@@ -2,6 +2,7 @@ const express = require("express");
 const { db } = require("../db");
 
 const router = express.Router();
+const VALID_ANSWERS = new Set(["A", "B", "C", "D"]);
 
 function all(sql, params = []) {
   return new Promise((resolve, reject) => {
@@ -35,6 +36,23 @@ function roundValue(value) {
   }
 
   return Number(Number(value).toFixed(2));
+}
+
+function isPlainObject(value) {
+  return value !== null && typeof value === "object" && !Array.isArray(value);
+}
+
+function normalizeAnswer(value) {
+  if (typeof value !== "string") {
+    return null;
+  }
+
+  const normalizedValue = value.trim().toUpperCase();
+  return VALID_ANSWERS.has(normalizedValue) ? normalizedValue : null;
+}
+
+function createPlaceholders(values) {
+  return values.map(() => "?").join(", ");
 }
 
 function normalizeAggregate(row) {
@@ -175,7 +193,22 @@ router.get("/:id", async (req, res) => {
       [videoId]
     );
 
-    const quizzes = await all("SELECT * FROM quizzes WHERE video_id = ? ORDER BY id ASC", [videoId]);
+    const quizzes = await all(
+      `
+        SELECT
+          id,
+          video_id,
+          question,
+          option_a,
+          option_b,
+          option_c,
+          option_d
+        FROM quizzes
+        WHERE video_id = ?
+        ORDER BY id ASC
+      `,
+      [videoId]
+    );
     const evaluation = await getVideoEvaluation(video.video_code);
 
     return res.json({
@@ -186,6 +219,128 @@ router.get("/:id", async (req, res) => {
     });
   } catch {
     return res.status(500).json({ error: "Could not load video details." });
+  }
+});
+
+router.post("/:id/quiz/grade", async (req, res) => {
+  const videoId = req.params.id;
+  const submittedAnswers = req.body ? req.body.answers : null;
+
+  try {
+    const video = await get("SELECT id FROM videos WHERE id = ?", [videoId]);
+
+    if (!video) {
+      return res.status(404).json({ error: "Video not found." });
+    }
+
+    const quizQuestions = await all(
+      `
+        SELECT
+          id,
+          video_id,
+          correct_answer
+        FROM quizzes
+        WHERE video_id = ?
+        ORDER BY id ASC
+      `,
+      [video.id]
+    );
+
+    if (quizQuestions.length === 0) {
+      return res.status(400).json({ error: "No quiz questions are available for this video." });
+    }
+
+    if (!isPlainObject(submittedAnswers)) {
+      return res.status(400).json({ error: "answers must be an object keyed by quiz ID." });
+    }
+
+    const submittedQuizIds = Object.keys(submittedAnswers);
+    const invalidQuizIds = submittedQuizIds.filter((quizId) => !/^\d+$/.test(quizId));
+
+    if (invalidQuizIds.length > 0) {
+      return res.status(400).json({
+        error: "Quiz IDs must be numeric strings.",
+        invalid_quiz_ids: invalidQuizIds,
+      });
+    }
+
+    const normalizedAnswers = new Map();
+    const invalidAnswers = [];
+
+    for (const quizId of submittedQuizIds) {
+      const normalizedAnswer = normalizeAnswer(submittedAnswers[quizId]);
+
+      if (!normalizedAnswer) {
+        invalidAnswers.push(quizId);
+        continue;
+      }
+
+      normalizedAnswers.set(Number(quizId), normalizedAnswer);
+    }
+
+    if (invalidAnswers.length > 0) {
+      return res.status(400).json({
+        error: "Answers must be one of A, B, C, or D.",
+        invalid_quiz_ids: invalidAnswers,
+      });
+    }
+
+    const expectedQuizIds = new Set(quizQuestions.map((quiz) => quiz.id));
+    const submittedNumericIds = submittedQuizIds.map(Number);
+    const unknownQuizIds = submittedNumericIds.filter((quizId) => !expectedQuizIds.has(quizId));
+    const missingQuizIds = quizQuestions
+      .filter((quiz) => !normalizedAnswers.has(quiz.id))
+      .map((quiz) => quiz.id);
+
+    if (unknownQuizIds.length > 0) {
+      const existingRows = await all(
+        `SELECT id, video_id FROM quizzes WHERE id IN (${createPlaceholders(unknownQuizIds)})`,
+        unknownQuizIds
+      );
+      const existingQuizIds = new Set(existingRows.map((row) => row.id));
+      const wrongVideoQuizIds = existingRows
+        .filter((row) => row.video_id !== video.id)
+        .map((row) => row.id);
+      const notFoundQuizIds = unknownQuizIds.filter((quizId) => !existingQuizIds.has(quizId));
+
+      return res.status(400).json({
+        error: "Submitted quiz IDs are unknown or do not belong to this video.",
+        wrong_video_quiz_ids: wrongVideoQuizIds,
+        unknown_quiz_ids: notFoundQuizIds,
+      });
+    }
+
+    if (missingQuizIds.length > 0 || submittedNumericIds.length !== quizQuestions.length) {
+      return res.status(400).json({
+        error: "Please answer every quiz question exactly once.",
+        missing_quiz_ids: missingQuizIds,
+      });
+    }
+
+    let score = 0;
+    const results = quizQuestions.map((quiz) => {
+      const selectedAnswer = normalizedAnswers.get(quiz.id);
+      const isCorrect = selectedAnswer === quiz.correct_answer;
+
+      if (isCorrect) {
+        score += 1;
+      }
+
+      return {
+        quiz_id: quiz.id,
+        selected_answer: selectedAnswer,
+        correct_answer: quiz.correct_answer,
+        is_correct: isCorrect,
+      };
+    });
+
+    return res.json({
+      score,
+      total: quizQuestions.length,
+      results,
+    });
+  } catch {
+    return res.status(500).json({ error: "Could not grade quiz." });
   }
 });
 
